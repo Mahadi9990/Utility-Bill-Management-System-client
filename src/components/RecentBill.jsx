@@ -1,8 +1,10 @@
-import React from "react";
-import { useLoaderData } from "react-router-dom";
+import React, { useEffect, useState } from 'react'
 
-export default function Bills() {
-  const bills = useLoaderData();
+export default function RecentBill() {
+    const [bills, setbills] = useState([]);
+    useEffect(() => {
+        fetch("http://localhost:3000/sixBills").then((res)=>res.json()).then(item=>setbills(item))
+    }, []);
   return (
     <div>
       <div className="max-w-6xl mx-auto p-6">
@@ -39,5 +41,5 @@ export default function Bills() {
         </div>
       </div>
     </div>
-  );
+  )
 }

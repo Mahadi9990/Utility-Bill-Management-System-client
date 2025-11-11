@@ -18,7 +18,7 @@ export default function Header() {
     <NavLink to="/">Home</NavLink>
     <NavLink to="/bills">Bills</NavLink>
     <NavLink to="/about">About</NavLink>
-    {user?<><NavLink to="/mybills">MyBills</NavLink>
+    {user?<><NavLink to="/mybills">My-Pay-Bills</NavLink>
     <NavLink to="/profile">Profile</NavLink></>:""}
   </>;
   return (

@@ -1,14 +1,12 @@
 
 import React from "react";
-import { useLoaderData } from "react-router";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper/modules";
 
-export default function SwiperList() {
-      const allSkills = useLoaderData();
+export default function SwiperList({allSkills}) {
 
   return (
     <Swiper

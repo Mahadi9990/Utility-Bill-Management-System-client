@@ -6,7 +6,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { AuthContext } from "../providers/AuthContext";
 
 export default function Register() {
-  const { createUser, setuser, googleSubmit, updataUser } =
+  const { createUser, setuser, googleSubmit } =
     useContext(AuthContext);
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
@@ -14,8 +14,8 @@ export default function Register() {
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
-    const userName = form.userName.value;
-    const photoUrl = form.photoUrl.value;
+    const name = form.userName.value;
+    const profile_image = form.photoUrl.value;
     const email = form.email.value;
     const password = form.password.value;
 
@@ -30,16 +30,16 @@ export default function Register() {
     createUser(email, password)
       .then((result) => {
         const user = result.user;
-        updataUser({ displayName: userName, photoURL: photoUrl })
-          .then(() => {
-            setuser({ ...user, displayName: userName, photoURL: photoUrl });
-            toast.success("Registration successful!");
-            navigate("/");
-          })
-          .catch((error) => {
-            toast.error(error.message);
-            setuser(user);
-          });
+        setuser(user);
+        toast.success("Register successfully!");
+        navigate(`${location.state ? location.state : "/"}`);
+        fetch("http://localhost:3000/usersPost",{
+          method:'POST',
+          headers:{
+            'content-type':"application/json"
+          },
+          body:JSON.stringify({name,profile_image,email,password})
+        }).then((res)=>res.json()).then(data => console.log(data))
       })
       .catch((error) => {
         toast.error(error.message);

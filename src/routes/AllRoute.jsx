@@ -20,39 +20,46 @@ export const AllRoute = createBrowserRouter([
     children: [
       {
         index: true,
-        loader:()=>fetch('/8data.json'),
-        element:<Main/>
-      },{
-        path:'mybills',
-        element:<Mybills/>
-      }
-      ,{
-        path:'bills',
-        element:<Bills/>
-      }
-      ,{
-        path:'Profile',
-        element:<Profile/>
-      }
-      ,{
-        path:'about',
-        element:<About/>
-      }
+        loader: async () => {
+          const res = await fetch("http://localhost:3000/bills");
+          if (!res.ok) throw new Error("Failed to fetch bills");
+          return res.json();
+        },
+        element: <Main />,
+      },
+      {
+        path: "mybills",
+        element: <Mybills />,
+      },
+      {
+        path: "bills",
+        loader: () => fetch("http://localhost:3000/bills"),
+        HydrateFallback: Loading,
+        element: <Bills />,
+      },
+      {
+        path: "Profile",
+        element: <Profile />,
+      },
+      {
+        path: "about",
+        element: <About />,
+      },
     ],
   },
   {
-    path:'/auth',
-    Component:Auth,
-    HydrateFallback:<Loading/>,
-    children:[
-        {
-            index:true,
-            Component:Login
-        },{
-            path:'register',
-            Component:Register
-        }
-    ]
+    path: "/auth",
+    Component: Auth,
+    children: [
+      {
+        index: true,
+        Component: Login,
+      },
+      {
+        path: "register",
+        Component: Register,
+      },
+    ],
   },
   {
     path: "*",
