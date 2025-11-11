@@ -4,30 +4,15 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../providers/AuthContext";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import Header from "../components/Header";
 
 export default function Login() {
   const emailRef = useRef();
-  const { singIn, setuser, forgotEmail, googleSubmit } = use(AuthContext);
+  const { singIn, setuser, googleSubmit } = use(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleForgotPassword = () => {
-    const email = emailRef.current.value;
-    if (!email) {
-      toast.error("Please enter your email first!");
-      return;
-    }
-    forgotEmail(email)
-      .then(() => {
-        toast.success("Check your email for reset instructions");
-      })
-      .catch((error) => {
-        toast.error(error.message);
-      });
-  };
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -94,7 +79,6 @@ export default function Login() {
           <div className="mt-2">
             <button
               type="button"
-              onClick={handleForgotPassword}
               className="link link-hover text-blue-600"
             >
               Forgot password?

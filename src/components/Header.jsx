@@ -1,9 +1,19 @@
 import React, { use } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../providers/AuthContext";
+import { toast } from "react-toastify";
 
 export default function Header() {
-    const {user} =use(AuthContext)
+    const { user, singOutUser } = use(AuthContext);
+      const handleSingout = () => {
+        singOutUser()
+          .then(() => {
+            toast("Sign-out successful");
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      };
   const links = <>
     <NavLink to="/">Home</NavLink>
     <NavLink to="/bills">Bills</NavLink>
@@ -48,7 +58,7 @@ export default function Header() {
           </ul>
         </div>
         <div className="navbar-end">
-          {!user ?<Link to='/auth' className="btn">Login</Link>:<Link to className="btn">Sing Out</Link>}
+          {!user ?<Link to='/auth' className="btn">Login</Link>:<Link onClick={handleSingout} className="btn">Sing Out</Link>}
         </div>
       </div>
     </div>
