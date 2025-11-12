@@ -11,6 +11,8 @@ import Auth from "../layouts/Auth";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import About from "../components/About";
+import BillDetails from "../components/BillDetails";
+import PrivateRoute from "../providers/PrivateRoute";
 
 export const AllRoute = createBrowserRouter([
   {
@@ -36,6 +38,19 @@ export const AllRoute = createBrowserRouter([
         loader: () => fetch("http://localhost:3000/bills"),
         HydrateFallback: Loading,
         element: <Bills />,
+      },
+      {
+        path: "/bills/:id",
+        loader: async ({ params }) => {
+          const res = await fetch(`http://localhost:3000/bills/${params.id}`);
+          if (!res.ok) throw new Error("Failed to fetch bill details");
+          return res.json();
+        },
+        element: (
+          <PrivateRoute>
+            <BillDetails />
+          </PrivateRoute>
+        ),
       },
       {
         path: "Profile",

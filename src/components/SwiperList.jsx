@@ -6,7 +6,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper/modules";
 
-export default function SwiperList({allSkills}) {
+export default function SwiperList({allBills}) {
 
   return (
     <Swiper
@@ -17,7 +17,7 @@ export default function SwiperList({allSkills}) {
       spaceBetween={20}
       slidesPerView={1} // change as needed
     >
-      {allSkills.map((item) => (
+      {allBills.map((item) => (
         <SwiperSlide key={item.skillId} >
           <div className="p-4 border rounded shadow text-center">
             <img

@@ -2,13 +2,15 @@ import React from 'react'
 import SwiperList from './SwiperList'
 import { useLoaderData } from 'react-router-dom'
 import RecentBill from './RecentBill'
+import Catagory from './Catagory'
 
 export default function Main() {
-  const allSkills =useLoaderData()
+  const allBills =useLoaderData()
   return (
     <div>
-        <SwiperList allSkills={allSkills}/>
+        <SwiperList allBills={allBills}/>
         <RecentBill/>
+        <Catagory allBills={allBills}/>
     </div>
   )
 }

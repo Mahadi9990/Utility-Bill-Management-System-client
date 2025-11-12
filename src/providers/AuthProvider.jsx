@@ -6,7 +6,6 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
-  updateProfile,
 } from "firebase/auth";
 import { auth } from "../firebase/firebase.config";
 import { AuthContext } from "./AuthContext";
@@ -26,9 +25,6 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password)
   
   };
-const updataUser =(object)=>{
-  return updateProfile(auth.currentUser,object )
-}
   const singOutUser =()=>{
    return signOut(auth)
   }
@@ -50,7 +46,6 @@ const updataUser =(object)=>{
     setloading,
     loading,
     googleSubmit,
-    updataUser
   };
   return <AuthContext value={authData}>{children}</AuthContext>;
 };
