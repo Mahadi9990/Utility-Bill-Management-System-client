@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 
 export default function CatagoryMenu({ catagoryName, allBills }) {
     const [bills, setbills] = useState(allBills);
@@ -22,10 +22,9 @@ export default function CatagoryMenu({ catagoryName, allBills }) {
     <div className="">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {bills.map((bill, index) => (
-            <div
-              key={index}
-              className="border rounded-xl shadow-md hover:shadow-lg transition bg-white overflow-hidden"
-            >
+            <Link key={index} to={`/bills/${bill._id}`}>
+            <div 
+              className="border rounded-xl shadow-md hover:shadow-lg transition bg-white overflow-hidden">
               <img
                 src={bill.image}
                 alt={bill.title}
@@ -46,6 +45,7 @@ export default function CatagoryMenu({ catagoryName, allBills }) {
                 <p className="text-xs text-gray-400 mt-1">{bill.email}</p>
               </div>
             </div>
+            </Link>
           ))}
         </div>
       </div>

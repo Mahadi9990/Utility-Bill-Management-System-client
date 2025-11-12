@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 
 export default function RecentBill() {
     const [bills, setbills] = useState([]);
@@ -13,8 +14,8 @@ export default function RecentBill() {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {bills.map((bill, index) => (
+            <Link key={index} to={`/bills/${bill._id}`}>
             <div
-              key={index}
               className="border rounded-xl shadow-md hover:shadow-lg transition bg-white overflow-hidden"
             >
               <img
@@ -37,6 +38,7 @@ export default function RecentBill() {
                 <p className="text-xs text-gray-400 mt-1">{bill.email}</p>
               </div>
             </div>
+            </Link>
           ))}
         </div>
       </div>
