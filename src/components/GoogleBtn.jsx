@@ -18,11 +18,12 @@ export default function GoogleBtn() {
           name: user.displayName || "Anonymous",
           email: user.email || user.providerData[0]?.email,
           profile_image: user.photoURL || "",
-        };
+        }
         fetch("http://localhost:3000/usersPost", {
           method: "POST",
           headers: {
             "content-type": "application/json",
+            authorization: `Bearer ${user.accessToken}`,
           },
           body: JSON.stringify(userData),
         })

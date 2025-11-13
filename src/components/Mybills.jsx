@@ -5,10 +5,15 @@ export default function Mybills() {
   const { user } = use(AuthContext);
   const [userPayBillList, setuserPayBillList] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:3000/userBillsRecords?email=${user.email}`)
+    fetch(`http://localhost:3000/userBillsRecords?email=${user.email}`, {
+      headers: {
+        Authorization: `Bearer ${user.accessToken}`,
+        "Content-Type": "application/json",
+      },
+    })
       .then((res) => res.json())
       .then((data) => setuserPayBillList(data));
-  }, [user.email]);
+  }, [user]);
   const totalAmount = userPayBillList.reduce(
     (sum, bill) => sum + (bill.amounts || 0),
     0

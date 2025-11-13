@@ -7,8 +7,7 @@ import { AuthContext } from "../providers/AuthContext";
 import GoogleBtn from "../components/GoogleBtn";
 
 export default function Register() {
-  const { createUser, setuser } =
-    useContext(AuthContext);
+  const { createUser, setuser } = useContext(AuthContext);
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 
@@ -34,20 +33,21 @@ export default function Register() {
         setuser(user);
         toast.success("Register successfully!");
         navigate(`${location.state ? location.state : "/"}`);
-        fetch("http://localhost:3000/usersPost",{
-          method:'POST',
-          headers:{
-            'content-type':"application/json"
+        fetch("http://localhost:3000/usersPost", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            authorization: `Bearer ${user.accessToken}`,
           },
-          body:JSON.stringify({name,profile_image,email,password})
-        }).then((res)=>res.json()).then(data => console.log(data))
+          body: JSON.stringify({ name, profile_image, email, password }),
+        })
+          .then((res) => res.json())
+          .then((data) => console.log(data));
       })
       .catch((error) => {
         toast.error(error.message);
       });
   };
-
-
 
   return (
     <div>
@@ -100,7 +100,7 @@ export default function Register() {
         </form>
 
         {/* Google */}
-        <GoogleBtn/>
+        <GoogleBtn />
         <p className="mt-3 text-center">
           Already have an account?{" "}
           <Link className="text-red-600 font-bold" to="/auth/login">
