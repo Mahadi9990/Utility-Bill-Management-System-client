@@ -130,14 +130,14 @@ export default function BillDetails() {
                 >
                   Submit Payment
                 </button>
+              </form>
+            </div>
                 <button
                   onClick={() => modleRef.current.close()}
                   className="btn"
                 >
                   Close
                 </button>
-              </form>
-            </div>
           </div>
         </dialog>
       </div>

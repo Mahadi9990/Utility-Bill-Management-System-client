@@ -2,9 +2,10 @@ import React, { use, useRef } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { AuthContext } from "../providers/AuthContext";
+import Catagory from "./Catagory";
 
 export default function Bills() {
-  const {user} =use(AuthContext)
+  const { user } = use(AuthContext);
   const bills = useLoaderData();
   const modleRef = useRef(null);
   const handelClick = () => {
@@ -13,16 +14,16 @@ export default function Bills() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
-     const formData = {
-    title: form.title.value,
-    category: form.category.value,
-    email: form.email.value,
-    location: form.location.value,
-    description: form.description.value,
-    image: form.image.value,
-    date: form.date.value,
-    amount: parseFloat(form.amount.value), // convert to number
-  };
+    const formData = {
+      title: form.title.value,
+      category: form.category.value,
+      email: form.email.value,
+      location: form.location.value,
+      description: form.description.value,
+      image: form.image.value,
+      date: form.date.value,
+      amount: parseFloat(form.amount.value), // convert to number
+    };
     try {
       const res = await fetch("http://localhost:3000/billsPost", {
         method: "POST",
@@ -31,7 +32,7 @@ export default function Bills() {
       });
       if (!res.ok) throw new Error("Failed to submit bill");
       toast.success("Bill submitted successfully!");
-       modleRef.current.close()
+      modleRef.current.close();
     } catch (err) {
       toast.error(err.message);
     }
@@ -47,39 +48,48 @@ export default function Bills() {
           Open Model
         </button>
       </div>
-      <h2 className="text-3xl font-bold mb-6 text-center">All Bill Reports</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {bills.map((bill, index) => (
-          <Link key={index} to={`/bills/${bill._id}`}>
-            <div className="border rounded-xl shadow-md hover:shadow-lg transition bg-white overflow-hidden">
-              <img
-                src={bill.image}
-                alt={bill.title}
-                className="w-full h-48 object-cover"
-              />
-              <div className="p-4">
-                <h3 className="text-xl font-semibold">{bill.title}</h3>
-                <p className="text-sm text-gray-500 mb-1">
-                  📍 {bill.location} | 📅 {bill.date}
-                </p>
-                <p className="text-gray-700 text-sm mb-2">{bill.description}</p>
-                <p className="text-sm font-medium text-blue-600">
-                  Category: {bill.category}
-                </p>
-                <p className="text-sm text-green-700 font-bold mt-2">
-                  Amount: {bill.amount} BDT
-                </p>
-                <p className="text-xs text-gray-400 mt-1">{bill.email}</p>
+      <div className="">
+        <h1 className="text-center text-4xl font-bold my-6">All Bills</h1>
+        <Catagory allBills={bills}/>
+        {/* <h2 className="text-3xl font-bold mb-6 text-center">
+          All Bill Reports
+        </h2> */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {bills.map((bill, index) => (
+            <Link key={index} to={`/bills/${bill._id}`}>
+              <div className="border rounded-xl shadow-md hover:shadow-lg transition bg-white overflow-hidden">
+                <img
+                  src={bill.image}
+                  alt={bill.title}
+                  className="w-full h-48 object-cover"
+                />
+                <div className="p-4">
+                  <h3 className="text-xl font-semibold">{bill.title}</h3>
+                  <p className="text-sm text-gray-500 mb-1">
+                    📍 {bill.location} | 📅 {bill.date}
+                  </p>
+                  <p className="text-gray-700 text-sm mb-2">
+                    {bill.description}
+                  </p>
+                  <p className="text-sm font-medium text-blue-600">
+                    Category: {bill.category}
+                  </p>
+                  <p className="text-sm text-green-700 font-bold mt-2">
+                    Amount: {bill.amount} BDT
+                  </p>
+                  <p className="text-xs text-gray-400 mt-1">{bill.email}</p>
+                </div>
               </div>
-            </div>
-          </Link>
-        ))}
+            </Link>
+          ))}
+        </div>
       </div>
       {/* Open the modal using document.getElementById('ID').showModal() method */}
       <dialog
         ref={modleRef}
         id="my_modal_5"
-        className="modal modal-bottom sm:modal-middle">
+        className="modal modal-bottom sm:modal-middle"
+      >
         <div className="modal-box">
           <h3 className="font-bold text-lg">Make a Bill</h3>
           <p className="py-4">
@@ -158,12 +168,14 @@ export default function Bills() {
               >
                 Submit Bill
               </button>
-              <button onClick={() => modleRef.current.close()} className="btn">Close</button>
+              <button onClick={() => modleRef.current.close()} className="btn">
+                Close
+              </button>
             </form>
           </div>
         </div>
       </dialog>
-       <ToastContainer />
+      <ToastContainer />
     </div>
   );
 }

@@ -4,11 +4,14 @@ import { Link, NavLink } from "react-router";
 export default function CatagoryMenu({ catagoryName, allBills }) {
     const [bills, setbills] = useState(allBills);
     const handleClick =(menuName)=>{
+      if(menuName === "All"){
+        fetch(`http://localhost:3000/bills`).then(res=>res.json()).then(data=>setbills(data))
+      }else{
         fetch(`http://localhost:3000/catagorys/${menuName}`).then(res=>res.json()).then(data=>setbills(data))
+      }
     }
   return (
     <>
-    <h1 className="text-center text-4xl font-bold">Cagagorty</h1>
     <div className="flex flex-col md:flex-row justify-center items-center gap-4 p-4 mx-auto">
       {catagoryName.map((item) => (
         <div key={item._id}>
