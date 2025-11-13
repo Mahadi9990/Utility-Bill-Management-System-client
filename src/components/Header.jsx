@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 
 export default function Header() {
     const { user, singOutUser } = use(AuthContext);
+    console.log(user)
       const handleSingout = () => {
         singOutUser()
           .then(() => {
@@ -18,8 +19,7 @@ export default function Header() {
     <NavLink to="/">Home</NavLink>
     <NavLink to="/bills">Bills</NavLink>
     <NavLink to="/about">About</NavLink>
-    {user?<><NavLink to="/mybills">My-Pay-Bills</NavLink>
-    <NavLink to="/profile">Profile</NavLink></>:""}
+    {user?<><NavLink to="/mybills">My-Pay-Bills</NavLink></>:""}
   </>;
   return (
     <div>
@@ -58,7 +58,14 @@ export default function Header() {
           </ul>
         </div>
         <div className="navbar-end">
-          {!user ?<Link to='/auth' className="btn">Login</Link>:<Link onClick={handleSingout} className="btn">Sing Out</Link>}
+          {!user ?<Link to='/auth' className="btn">Login</Link>:<>
+          <div className="">
+            <img className="h-20 w-20 rounded-full p-4" 
+            src={user.profile_image?user?.profile_image:`https://i.ibb.co.com/6RC2Y5PX/elementor-placeholder-image.png`}
+            alt="" />
+          </div>
+          <Link onClick={handleSingout} className="btn">Sing Out</Link>
+          </>}
         </div>
       </div>
     </div>

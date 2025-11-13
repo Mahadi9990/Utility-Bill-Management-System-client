@@ -6,7 +6,6 @@ import Loading from "../components/Loading";
 import Main from "../components/Main";
 import Mybills from "../components/Mybills";
 import Bills from "../components/Bills";
-import Profile from "../components/Profile";
 import Auth from "../layouts/Auth";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
@@ -52,10 +51,6 @@ export const AllRoute = createBrowserRouter([
             <BillDetails />
           </PrivateRoute>
         ),
-      },
-      {
-        path: "Profile",
-        element: <Profile />,
       },
       {
         path: "about",
