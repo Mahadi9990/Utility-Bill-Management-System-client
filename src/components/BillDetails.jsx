@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../providers/AuthContext";
 
 export default function BillDetails() {
-  const {user} =use(AuthContext)
+  const { user } = use(AuthContext);
   const data = useLoaderData(); // loaded from your loader
   const [allUserPaybillsRecord, setallUserPaybillsRecord] = useState([]);
   const currentDate = new Date();
@@ -14,9 +14,7 @@ export default function BillDetails() {
   const modleRef = useRef();
   const billMonth = billDate.getMonth();
   useEffect(() => {
-    fetch(`http://localhost:3000/billsRecodes/${data._id}`,{
-      method:"Post"
-    })
+    fetch(`http://localhost:3000/billsRecodes/${data._id}`)
       .then((res) => res.json())
       .then((data) => setallUserPaybillsRecord(data));
   }, [data._id]);
@@ -25,22 +23,23 @@ export default function BillDetails() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-     const formData = {
-       title: data.title,
-    payUserEmail: user.email,
-    category: data.category,
-    payUserId: data._id,
-    amounts: parseFloat(data.amount), // convert to number
-    status: data.status,
-  };
+    const formData = {
+      title: data.title,
+      payUserEmail: user.email,
+      category: data.category,
+      payUserId: data._id,
+      amounts: parseFloat(data.amount), // convert to number
+    };
     try {
-      fetch("http://localhost:3000/billsRecords",{
-          method:'POST',
-          headers:{
-            'content-type':"application/json"
-          },
-          body:JSON.stringify(formData)
-        }).then((res)=>res.json()).then(data => console.log(data))
+      fetch("http://localhost:3000/billsRecords", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+        .then((res) => res.json())
+        .then((data) => console.log(data));
       modleRef.current.close();
     } catch (err) {
       toast.error(err.message);
@@ -55,7 +54,7 @@ export default function BillDetails() {
           className="modal modal-bottom sm:modal-middle"
         >
           <div className="modal-box">
-            <h3 className="font-bold text-lg">Hello!</h3>
+            <h3 className="font-bold text-lg">Pay your bill!</h3>
             <p className="py-4">
               Press ESC key or click the button below to close
             </p>
@@ -125,22 +124,6 @@ export default function BillDetails() {
                   />
                 </div>
 
-                <div>
-                  <label className="block text-gray-600 font-medium mb-1">
-                    Status
-                  </label>
-                  <select
-                    name="status"
-                    defaultValue={data.status}
-                    className="w-full border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-                  >
-                    <option>Paid</option>
-                    <option>Pending</option>
-                    <option>Failed</option>
-                  </select>
-                </div>
-
-
                 <button
                   type="submit"
                   className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition font-semibold"
@@ -187,16 +170,16 @@ export default function BillDetails() {
               <button
                 disabled
                 onClick={() => {
-                handelClick();
-              }}
+                  handelClick();
+                }}
                 className="mt-6 w-full bg-blue-300 text-[#e5d1d1] py-2 rounded-lg hover:bg-blue-300 transition"
               >
                 Pay now
               </button>
               <button
                 onClick={() => {
-                handelClick();
-              }}
+                  handelClick();
+                }}
                 className="mt-6 w-full bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition"
               >
                 Pay with fine
@@ -220,39 +203,36 @@ export default function BillDetails() {
           no Payment records founds
         </h1>
       ) : (
-        ""
-      )}
-      <div className=" my-6">
-        <div className="overflow-x-auto">
-          <table className="table">
-            {/* head */}
-            <thead>
-              <tr>
-                <th>Inext No</th>
-                <th>User Email</th>
-                <th>Title</th>
-                <th>Catagory</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            {allUserPaybillsRecord.map((item, index) => (
-              <tbody key={index}>
-                {/* row 1 */}
+        <div className=" my-6">
+          <div className="overflow-x-auto">
+            <table className="table">
+              {/* head */}
+              <thead>
                 <tr>
-                  <th>{index + 1}</th>
-                  <td>
-                    <p>{item?.payUserEmail}</p>
-                  </td>
-                  <td>{item?.title}</td>
-                  <td>{item?.category}</td>
-                  <td>{item?.status}</td>
+                  <th>Inext No</th>
+                  <th>User Email</th>
+                  <th>Title</th>
+                  <th>Catagory</th>
                 </tr>
-              </tbody>
-            ))}
-            {/* foot */}
-          </table>
+              </thead>
+              {allUserPaybillsRecord.map((item, index) => (
+                <tbody key={index}>
+                  {/* row 1 */}
+                  <tr>
+                    <th>{index + 1}</th>
+                    <td>
+                      <p>{item?.payUserEmail}</p>
+                    </td>
+                    <td>{item?.title}</td>
+                    <td>{item?.category}</td>
+                  </tr>
+                </tbody>
+              ))}
+              {/* foot */}
+            </table>
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 }

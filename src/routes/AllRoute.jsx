@@ -31,7 +31,8 @@ export const AllRoute = createBrowserRouter([
       },
       {
         path: "mybills",
-        element: <Mybills />,
+        loader:()=>fetch(""),
+        element: <PrivateRoute><Mybills /></PrivateRoute>,
       },
       {
         path: "bills",

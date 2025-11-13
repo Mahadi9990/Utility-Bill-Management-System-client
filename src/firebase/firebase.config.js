@@ -1,17 +1,21 @@
+
+
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+
 import { getAuth } from "firebase/auth";
+
 // TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries 
+// https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDwXi7oSFe8JMg9o0p1u1qrGOfp61oEZow",
-  authDomain: "utility-bill-management-b8ff8.firebaseapp.com",
-  projectId: "utility-bill-management-b8ff8",
-  storageBucket: "utility-bill-management-b8ff8.firebasestorage.app",
-  messagingSenderId: "159793875511",
-  appId: "1:159793875511:web:1d56a24652183c98694db2"
+  apiKey: "AIzaSyDCaT4HL_5bhhPV1YIU_zV28APk_-gd-pk",
+  authDomain: "server-2-31130.firebaseapp.com",
+  projectId: "server-2-31130",
+  storageBucket: "server-2-31130.firebasestorage.app",
+  messagingSenderId: "33085834590",
+  appId: "1:33085834590:web:5b351b41ed29fa120b7bcf"
 };
 
 // Initialize Firebase
