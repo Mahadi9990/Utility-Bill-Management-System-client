@@ -5,14 +5,13 @@ import { toast } from "react-toastify";
 
 export default function Header() {
     const { user, singOutUser } = use(AuthContext);
-    console.log(user)
       const handleSingout = () => {
         singOutUser()
           .then(() => {
             toast("Sign-out successful");
           })
           .catch((error) => {
-            console.log(error);
+            error
           });
       };
   const links = <>

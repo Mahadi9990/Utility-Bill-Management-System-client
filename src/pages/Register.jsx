@@ -42,7 +42,7 @@ export default function Register() {
           body: JSON.stringify({ name, profile_image, email, password }),
         })
           .then((res) => res.json())
-          .then((data) => console.log(data));
+          .then((data) => data);
       })
       .catch((error) => {
         toast.error(error.message);

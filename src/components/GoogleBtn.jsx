@@ -10,7 +10,6 @@ export default function GoogleBtn() {
     googleSubmit()
       .then((result) => {
         const user = result.user;
-        console.log(user)
         setuser(user);
         toast.success("Signed in with Google!");
         navigate("/");
@@ -28,7 +27,7 @@ export default function GoogleBtn() {
           body: JSON.stringify(userData),
         })
           .then((res) => res.json())
-          .then((data) => console.log(data));
+          .then((data) => data);
       })
       .catch((error) => {
         toast.error(error.message);

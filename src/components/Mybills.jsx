@@ -36,6 +36,8 @@ export default function Mybills() {
                   <th>Title</th>
                   <th>Catagory</th>
                   <th>Amount</th>
+                  <th></th>
+                  <th></th>
                 </tr>
               </thead>
               {userPayBillList.map((item, index) => (
@@ -49,6 +51,12 @@ export default function Mybills() {
                     <td>{item?.title}</td>
                     <td>{item?.category}</td>
                     <td>{item?.amounts}</td>
+                    <td>
+                      <button >Update</button>
+                    </td>
+                    <td>
+                      <button className="text-red-400">Delete</button>
+                    </td>
                   </tr>
                 </tbody>
               ))}
@@ -58,7 +66,7 @@ export default function Mybills() {
                   <th></th>
                   <th></th>
                   <th></th>
-                  <th>Total Bills</th>
+                  <th>Total Bill pay :{userPayBillList.length}</th>
                   <th>{totalAmount}</th>
                 </tr>
               </tfoot>

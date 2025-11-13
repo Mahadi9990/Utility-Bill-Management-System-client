@@ -39,7 +39,7 @@ export default function BillDetails() {
         body: JSON.stringify(formData),
       })
         .then((res) => res.json())
-        .then((data) => console.log(data));
+        .then((data) => data);
       modleRef.current.close();
     } catch (err) {
       toast.error(err.message);
