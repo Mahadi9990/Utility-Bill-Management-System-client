@@ -51,7 +51,7 @@ export default function Register() {
 
   return (
     <div>
-      <div className="card-body max-w-[600px] mx-auto">
+      <div className="card-body max-w-[600px] mx-auto shadow-2xl rounded-xl bg-amber-100 my-4">
         <h1 className="text-2xl font-extrabold text-center">Register Page</h1>
         <form className="fieldset" onSubmit={handleRegister}>
           <label className="label">User Name</label>
@@ -96,14 +96,14 @@ export default function Register() {
             </span>
           </div>
 
-          <button className="btn btn-neutral mt-4">Register</button>
+          <button className="btn primary-color mt-4">Register</button>
         </form>
 
         {/* Google */}
         <GoogleBtn />
         <p className="mt-3 text-center">
           Already have an account?{" "}
-          <Link className="text-red-600 font-bold" to="/auth/login">
+          <Link className="text-[#FF5A0A] font-bold" to="/auth">
             Login
           </Link>
         </p>

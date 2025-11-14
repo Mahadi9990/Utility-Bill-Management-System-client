@@ -44,25 +44,28 @@ export default function Bills() {
         <div className="">
           <h1>Add Bills</h1>
         </div>
-        <button onClick={() => handelClick()} className="btn btn-primary">
+        <button onClick={() => handelClick()} className="btn primary-color">
           Open Model
         </button>
       </div>
       <div className="">
         <h1 className="text-center text-4xl font-bold my-6">All Bills</h1>
-        <Catagory allBills={bills}/>
+        <Catagory allBills={bills} />
         {/* <h2 className="text-3xl font-bold mb-6 text-center">
           All Bill Reports
         </h2> */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-5">
           {bills.map((bill, index) => (
-            <Link key={index} to={`/bills/${bill._id}`}>
-              <div className="border rounded-xl shadow-md hover:shadow-lg transition bg-white overflow-hidden">
-                <img
-                  src={bill.image}
-                  alt={bill.title}
-                  className="w-full h-48 object-cover"
-                />
+            <div
+              key={index}
+              className="border bg-red- rounded-xl shadow-md hover:shadow-lg transition bg-white overflow-hidden"
+            >
+              <img
+                src={bill.image}
+                alt={bill.title}
+                className="w-full h-48 object-cover"
+              />
+              <div className="flex justify-evenly items-center">
                 <div className="p-4">
                   <h3 className="text-xl font-semibold">{bill.title}</h3>
                   <p className="text-sm text-gray-500 mb-1">
@@ -79,8 +82,15 @@ export default function Bills() {
                   </p>
                   <p className="text-xs text-gray-400 mt-1">{bill.email}</p>
                 </div>
+                <div className="">
+                  <Link to={`/bills/${bill._id}`}>
+                    <button className="btn primary-color text-[12px]">
+                      See Details
+                    </button>
+                  </Link>
+                </div>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
       </div>

@@ -15,9 +15,9 @@ export default function Header() {
           });
       };
   const links = <>
-    <NavLink to="/">Home</NavLink>
-    <NavLink to="/bills">Bills</NavLink>
-    <NavLink to="/about">About</NavLink>
+    <NavLink className='primary-color px-3 py-2 rounded-sm' to="/">Home</NavLink>
+    <NavLink className='primary-color px-3 py-2 rounded-sm' to="/bills">Bills</NavLink>
+    <NavLink className='primary-color px-3 py-2 rounded-sm' to="/about">About</NavLink>
     {user?<><NavLink to="/mybills">My-Pay-Bills</NavLink></>:""}
   </>;
   return (
@@ -44,12 +44,12 @@ export default function Header() {
             </div>
             <ul
               tabIndex="-1"
-              className="menu gap-3 menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className="menu gap-3 menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow"
             >
               {links}
             </ul>
           </div>
-          <Link to='/' className="text-xl font-extrabold">Bill Management</Link>
+          <Link to='/' className="text-xl font-extrabold"><img className="h-12 w-20" src={"/Logo-Bill-Full-Color-1.png"} alt="" /></Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 gap-3">
@@ -57,13 +57,13 @@ export default function Header() {
           </ul>
         </div>
         <div className="navbar-end">
-          {!user ?<Link to='/auth' className="btn">Login</Link>:<>
+          {!user ?<Link to='/auth' className="btn primary-color">Login</Link>:<>
           <div className="">
             <img className="h-20 w-20 rounded-full p-4" 
             src={user.profile_image?user?.profile_image:`https://i.ibb.co.com/6RC2Y5PX/elementor-placeholder-image.png`}
             alt="" />
           </div>
-          <Link onClick={handleSingout} className="btn">Sing Out</Link>
+          <Link onClick={handleSingout} className="btn primary-color">Sing Out</Link>
           </>}
         </div>
       </div>

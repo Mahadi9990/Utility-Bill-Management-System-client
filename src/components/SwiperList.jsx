@@ -10,7 +10,7 @@ export default function SwiperList({allBills}) {
 
   return (
     <Swiper
-      className="h-screen mx-auto max-w-8/12 md:max-w-10/12 lg:max-w-12/12 "
+      className="h-screen mx-auto max-w-8/12 md:max-w-10/12 lg:max-w-12/12"
       modules={[Navigation, Pagination]}
       navigation
       pagination={{ clickable: true }}
