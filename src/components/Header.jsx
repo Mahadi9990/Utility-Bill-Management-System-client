@@ -18,7 +18,7 @@ export default function Header() {
     <NavLink className='primary-color px-3 py-2 rounded-sm' to="/">Home</NavLink>
     <NavLink className='primary-color px-3 py-2 rounded-sm' to="/bills">Bills</NavLink>
     <NavLink className='primary-color px-3 py-2 rounded-sm' to="/about">About</NavLink>
-    {user?<><NavLink to="/mybills">My-Pay-Bills</NavLink></>:""}
+    {user?<><NavLink className='primary-color px-3 py-2 rounded-sm' to="/mybills">My-Pay-Bills</NavLink></>:""}
   </>;
   return (
     <div>
@@ -58,8 +58,8 @@ export default function Header() {
         </div>
         <div className="navbar-end">
           {!user ?<Link to='/auth' className="btn primary-color">Login</Link>:<>
-          <div className="">
-            <img className="h-20 w-20 rounded-full p-4" 
+          <div className="rounded-full">
+            <img className="h-20 w-20 rounded-full p-4 " 
             src={user.profile_image?user?.profile_image:`https://i.ibb.co.com/6RC2Y5PX/elementor-placeholder-image.png`}
             alt="" />
           </div>

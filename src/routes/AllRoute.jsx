@@ -21,6 +21,7 @@ export const AllRoute = createBrowserRouter([
     children: [
       {
         index: true,
+        // HydrateFallback: Loading,
         loader: async () => {
           const res = await fetch("http://localhost:3000/bills");
           if (!res.ok) throw new Error("Failed to fetch bills");
@@ -30,7 +31,6 @@ export const AllRoute = createBrowserRouter([
       },
       {
         path: "mybills",
-        loader:()=>fetch(""),
         element: <PrivateRoute><Mybills /></PrivateRoute>,
       },
       {
@@ -46,6 +46,7 @@ export const AllRoute = createBrowserRouter([
           if (!res.ok) throw new Error("Failed to fetch bill details");
           return res.json();
         },
+        HydrateFallback: Loading,
         element: (
           <PrivateRoute>
             <BillDetails />
