@@ -12,7 +12,9 @@ export default function Main() {
       <SwiperList className="" allBills={allBills} />
       <RecentBill />
       <h1 className="text-center text-4xl font-bold">Catagory</h1>
-      <Catagory allBills={allBills} />
+    <div className='max-w-[1000px] mx-auto'>
+      <Catagory  allBills={allBills} />
+      </div>
     </div>
   );
 }

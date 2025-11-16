@@ -1,9 +1,12 @@
-import React, { use, useEffect, useState } from "react";
+import React, { use, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../providers/AuthContext";
 
 export default function Mybills() {
   const { user } = use(AuthContext);
   const [userPayBillList, setuserPayBillList] = useState([]);
+  const [deleteId, setdeleteId] = useState(null);
+  console.log(deleteId);
+  const xbtn = useRef();
   useEffect(() => {
     fetch(`http://localhost:3000/userBillsRecords?email=${user.email}`, {
       headers: {
@@ -19,20 +22,49 @@ export default function Mybills() {
     0
   );
 
-  const handleDelete =(id)=>{
-    console.log('delete')
-    fetch(`http://localhost:3000/billsRecodes/${id}`,{
-      method:"DELETE"
-    }).then((res)=> res.json()).then(data => {
-      console.log(data.deletedCount)
-      if(data.deletedCount){
-        const remainUser =userPayBillList.filter((item)=>  item._id !== id)
-        setuserPayBillList(remainUser)
-      }
+  const handleDelete = (id) => {
+    console.log("delete");
+    fetch(`http://localhost:3000/billsRecodes/${id}`, {
+      method: "DELETE",
     })
-  }
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data.deletedCount);
+        if (data.deletedCount) {
+          const remainUser = userPayBillList.filter((item) => item._id !== id);
+          setuserPayBillList(remainUser);
+          xbtn.current.close();
+        }
+      });
+  };
   return (
     <div>
+      <dialog
+        ref={xbtn}
+        id="my_modal_5"
+        className="modal modal-bottom sm:modal-middle"
+      >
+        <div className="modal-box">
+          <h3 className="font-bold text-lg">
+            If you really want to delete this item, press the <span className="text-red-500">Yes</span> button.
+            Otherwise, press Close
+          </h3>
+          <div className="modal-action">
+            <form method="dialog">
+              {/* if there is a button in form, it will close the modal */}
+              <button onClick={() => xbtn.current.close()} className="btn">
+                Cencel
+              </button>
+              <button
+                onClick={() => handleDelete(deleteId)}
+                className="btn text-red-600"
+              >
+                Yes
+              </button>
+            </form>
+          </div>
+        </div>
+      </dialog>
       {userPayBillList.length == 0 ? (
         <h1 className="my-6 text-center font-2xl font-bold">
           no Payment records founds
@@ -65,10 +97,18 @@ export default function Mybills() {
                     <td>{item?.category}</td>
                     <td>{item?.amounts}</td>
                     <td>
-                      <button >Update</button>
+                      <button>Update</button>
                     </td>
                     <td>
-                      <button onClick={()=>handleDelete(item._id)}  className="text-red-400">Delete</button>
+                      <button
+                        className="text-red-400"
+                        onClick={() => {
+                          setdeleteId(item._id);
+                          xbtn.current.showModal();
+                        }}
+                      >
+                        Delete
+                      </button>
                     </td>
                   </tr>
                 </tbody>

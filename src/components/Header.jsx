@@ -84,6 +84,14 @@ export default function Header() {
           <ul className="menu menu-horizontal px-1 gap-3">{links}</ul>
         </div>
         <div className="navbar-end">
+          <div className="">
+                <button
+                  className="btn"
+                  onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+                >
+                  {theme === "light" ? "🌙" : "☀️"}
+                </button>
+              </div>
           {!user ? (
             <Link to="/auth" className="btn primary-color">
               Login
@@ -100,14 +108,6 @@ export default function Header() {
                   }
                   alt=""
                 />
-              </div>
-              <div className="">
-                <button
-                  className="btn"
-                  onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-                >
-                  {theme === "light" ? "🌙" : "☀️"}
-                </button>
               </div>
               <Link onClick={handleSingout} className="btn primary-color">
                 Sing Out

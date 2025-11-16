@@ -51,7 +51,7 @@ export default function Register() {
 
   return (
     <div>
-      <div className="card-body max-w-[600px] mx-auto shadow-2xl rounded-xl bg-amber-100 my-4">
+      <div className="card-body max-w-[600px] mx-auto shadow-2xl rounded-xl my-4">
         <h1 className="text-2xl font-extrabold text-center">Register Page</h1>
         <form className="fieldset" onSubmit={handleRegister}>
           <label className="label">User Name</label>
