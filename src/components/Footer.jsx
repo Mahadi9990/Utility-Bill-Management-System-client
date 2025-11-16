@@ -5,25 +5,84 @@ export default function Footer() {
   return (
     <div>
       <footer className="footer sm:footer-horizontal bg-base-200 text-base-content p-10">
+
         <nav>
-          <h6 className="footer-title">Services</h6>
-          <a className="link link-hover">Branding</a>
-          <a className="link link-hover">Design</a>
-          <a className="link link-hover">Marketing</a>
-          <a className="link link-hover">Advertisement</a>
+          <div className="flex flex-col items-center gap-4 rounded-xl mx-auto">
+            <h2 className="text-xl font-bold mb-2 text-gray-700">Services</h2>
+            <a
+              className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition"
+            >
+               Branding
+            </a>
+            <a
+              className="flex items-center gap-2 text-blue-400 hover:text-blue-600 transition"
+            >
+               Design
+            </a>
+            <a
+              className="flex items-center gap-2 text-pink-500 hover:text-pink-700 transition"
+            >
+               Marketing
+            </a>
+            <a
+
+              className="flex items-center gap-2 text-blue-700 hover:text-blue-900 transition"
+            >
+              Advertisement
+            </a>
+          </div>
         </nav>
         <nav>
-          <h6 className="footer-title">Company</h6>
-          <a className="link link-hover">About us</a>
-          <a className="link link-hover">Contact</a>
-          <a className="link link-hover">Jobs</a>
-          <a className="link link-hover">Press kit</a>
+          <div className="flex flex-col items-center gap-4 rounded-xl mx-auto">
+            <h2 className="text-xl font-bold mb-2 text-gray-700">Company</h2>
+            <a
+              className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition"
+            >
+               About us
+            </a>
+            <a
+              className="flex items-center gap-2 text-blue-400 hover:text-blue-600 transition"
+            >
+               Contact
+            </a>
+            <a
+              className="flex items-center gap-2 text-pink-500 hover:text-pink-700 transition"
+            >
+               Jobs
+            </a>
+            <a
+
+              className="flex items-center gap-2 text-blue-700 hover:text-blue-900 transition"
+            >
+              Press kit
+            </a>
+          </div>
         </nav>
         <nav>
-          <h6 className="footer-title">Legal</h6>
-          <a className="link link-hover">Terms of use</a>
-          <a className="link link-hover">Privacy policy</a>
-          <a className="link link-hover">Cookie policy</a>
+          <div className="flex flex-col items-center gap-4 rounded-xl mx-auto">
+            <h2 className="text-xl font-bold mb-2 text-gray-700">Legal</h2>
+            <a
+              className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition"
+            >
+               Terms of use
+            </a>
+            <a
+              className="flex items-center gap-2 text-blue-400 hover:text-blue-600 transition"
+            >
+               Privacy policy
+            </a>
+            <a
+              className="flex items-center gap-2 text-pink-500 hover:text-pink-700 transition"
+            >
+               Cookie policy
+            </a>
+            {/* <a
+
+              className="flex items-center gap-2 text-blue-700 hover:text-blue-900 transition"
+            >
+              LinkedIn
+            </a> */}
+          </div>
         </nav>
         <nav>
           <div className="flex flex-col items-center gap-4 rounded-xl mx-auto">

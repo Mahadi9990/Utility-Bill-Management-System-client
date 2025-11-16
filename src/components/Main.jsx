@@ -10,9 +10,9 @@ export default function Main() {
   return (
     <div>
       <SwiperList className="" allBills={allBills} />
+      <RecentBill />
       <h1 className="text-center text-4xl font-bold">Catagory</h1>
       <Catagory allBills={allBills} />
-      <RecentBill />
     </div>
   );
 }

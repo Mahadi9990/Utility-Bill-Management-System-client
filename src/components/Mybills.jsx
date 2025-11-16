@@ -18,6 +18,19 @@ export default function Mybills() {
     (sum, bill) => sum + (bill.amounts || 0),
     0
   );
+
+  const handleDelete =(id)=>{
+    console.log('delete')
+    fetch(`http://localhost:3000/billsRecodes/${id}`,{
+      method:"DELETE"
+    }).then((res)=> res.json()).then(data => {
+      console.log(data.deletedCount)
+      if(data.deletedCount){
+        const remainUser =userPayBillList.filter((item)=>  item._id !== id)
+        setuserPayBillList(remainUser)
+      }
+    })
+  }
   return (
     <div>
       {userPayBillList.length == 0 ? (
@@ -55,7 +68,7 @@ export default function Mybills() {
                       <button >Update</button>
                     </td>
                     <td>
-                      <button className="text-red-400">Delete</button>
+                      <button onClick={()=>handleDelete(item._id)}  className="text-red-400">Delete</button>
                     </td>
                   </tr>
                 </tbody>

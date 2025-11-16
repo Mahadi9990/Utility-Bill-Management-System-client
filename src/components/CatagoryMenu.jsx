@@ -33,7 +33,7 @@ export default function CatagoryMenu({ catagoryName, allBills }) {
           {bills.map((bill, index) => (
             <div
               key={index}
-              className="border bg-red- rounded-xl shadow-md hover:shadow-lg transition bg-white overflow-hidden"
+              className="border p-4 rounded-xl shadow-md hover:shadow-lg transition bg-white overflow-hidden"
             >
               <img
                 src={bill.image}

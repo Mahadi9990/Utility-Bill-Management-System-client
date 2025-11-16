@@ -1,8 +1,10 @@
 import React from "react";
 
 export default function About() {
+
+
   return (
-    <div className="min-h-screen bg-gradient-to-r from-blue-50 to-indigo-50 flex flex-col items-center justify-center p-6">
+    <div className="min-h-screen flex flex-col items-center justify-center p-6">
       
       {/* Heading */}
       <h1 className="text-5xl font-bold text-[#FF5A0A] mb-6 text-center">
@@ -10,7 +12,7 @@ export default function About() {
       </h1>
 
       {/* Subheading */}
-      <p className="text-lg text-gray-600 text-center max-w-3xl mb-8">
+      <p className={`text-lg text-[#6d5656] text-center max-w-3xl mb-8`}>
         Welcome to Utility Bill Management! We help users track and manage
         their utility bills efficiently. Our mission is to provide a seamless
         experience for managing bills and payments.

@@ -17,7 +17,7 @@ export default function BillDetails() {
     fetch(`http://localhost:3000/billsRecodes/${data._id}`)
       .then((res) => res.json())
       .then((data) => setallUserPaybillsRecord(data));
-  }, [data._id]);
+  }, [data._id,allUserPaybillsRecord]);
   const handelClick = () => {
     modleRef.current.showModal();
   };
@@ -39,8 +39,14 @@ export default function BillDetails() {
         body: JSON.stringify(formData),
       })
         .then((res) => res.json())
-        .then((data) => data);
-      modleRef.current.close();
+        .then((data) => {
+          if (data.insertedId) {
+            formData._id = data.insertedId;
+            const newRecords = [allUserPaybillsRecord, formData];
+            setallUserPaybillsRecord(newRecords);
+          }
+        });
+        modleRef.current.close();
     } catch (err) {
       toast.error(err.message);
     }
@@ -132,12 +138,9 @@ export default function BillDetails() {
                 </button>
               </form>
             </div>
-                <button
-                  onClick={() => modleRef.current.close()}
-                  className="btn"
-                >
-                  Close
-                </button>
+            <button onClick={() => modleRef.current.close()} className="btn">
+              Close
+            </button>
           </div>
         </dialog>
       </div>
@@ -206,29 +209,25 @@ export default function BillDetails() {
         <div className=" my-6">
           <div className="overflow-x-auto">
             <table className="table">
-              {/* head */}
               <thead>
                 <tr>
-                  <th>Inext No</th>
+                  <th>Index No</th>
                   <th>User Email</th>
                   <th>Title</th>
-                  <th>Catagory</th>
+                  <th>Category</th>
                 </tr>
               </thead>
-              {allUserPaybillsRecord.map((item, index) => (
-                <tbody key={index}>
-                  {/* row 1 */}
-                  <tr>
-                    <th>{index + 1}</th>
-                    <td>
-                      <p>{item?.payUserEmail}</p>
-                    </td>
-                    <td>{item?.title}</td>
-                    <td>{item?.category}</td>
+
+              <tbody>
+                {allUserPaybillsRecord.map((item, index) => (
+                  <tr key={item._id || index}>
+                    <td>{index + 1}</td>
+                    <td>{item.payUserEmail}</td>
+                    <td>{item.title}</td>
+                    <td>{item.category}</td>
                   </tr>
-                </tbody>
-              ))}
-              {/* foot */}
+                ))}
+              </tbody>
             </table>
           </div>
         </div>
