@@ -10,23 +10,23 @@ export default function Footer() {
           <div className="flex flex-col items-center gap-4 rounded-xl mx-auto">
             <h2 className="text-xl font-bold mb-2 text-gray-700">Services</h2>
             <a
-              className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition"
+              className="flex items-center gap-2  transition"
             >
                Branding
             </a>
             <a
-              className="flex items-center gap-2 text-blue-400 hover:text-blue-600 transition"
+              className="flex items-center gap-2 transition"
             >
                Design
             </a>
             <a
-              className="flex items-center gap-2 text-pink-500 hover:text-pink-700 transition"
+              className="flex items-center gap-2transition"
             >
                Marketing
             </a>
             <a
 
-              className="flex items-center gap-2 text-blue-700 hover:text-blue-900 transition"
+              className="flex items-center gap-2 transition"
             >
               Advertisement
             </a>
@@ -36,23 +36,23 @@ export default function Footer() {
           <div className="flex flex-col items-center gap-4 rounded-xl mx-auto">
             <h2 className="text-xl font-bold mb-2 text-gray-700">Company</h2>
             <a
-              className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition"
+              className="flex items-center transition"
             >
                About us
             </a>
             <a
-              className="flex items-center gap-2 text-blue-400 hover:text-blue-600 transition"
+              className="flex items-center gap-2 transition"
             >
                Contact
             </a>
             <a
-              className="flex items-center gap-2 text-pink-500 hover:text-pink-700 transition"
+              className="flex items-center gap-2 transition"
             >
                Jobs
             </a>
             <a
 
-              className="flex items-center gap-2 text-blue-700 hover:text-blue-900 transition"
+              className="flex items-center gap-2 transition"
             >
               Press kit
             </a>
@@ -62,26 +62,20 @@ export default function Footer() {
           <div className="flex flex-col items-center gap-4 rounded-xl mx-auto">
             <h2 className="text-xl font-bold mb-2 text-gray-700">Legal</h2>
             <a
-              className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition"
+              className="flex items-center gap-2 transition"
             >
                Terms of use
             </a>
             <a
-              className="flex items-center gap-2 text-blue-400 hover:text-blue-600 transition"
+              className="flex items-center gap-2 transition"
             >
                Privacy policy
             </a>
             <a
-              className="flex items-center gap-2 text-pink-500 hover:text-pink-700 transition"
+              className="flex items-center gap-2 transition"
             >
                Cookie policy
             </a>
-            {/* <a
-
-              className="flex items-center gap-2 text-blue-700 hover:text-blue-900 transition"
-            >
-              LinkedIn
-            </a> */}
           </div>
         </nav>
         <nav>

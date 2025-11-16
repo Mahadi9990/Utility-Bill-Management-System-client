@@ -44,7 +44,7 @@ export default function Header() {
     </>
   );
   return (
-    <div>
+    <div className=" sticky top-0 left-0 w-full z-10">
       <div className="navbar bg-base-100 shadow-sm">
         <div className="navbar-start">
           <div className="dropdown">

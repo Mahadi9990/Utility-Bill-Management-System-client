@@ -10,9 +10,9 @@ export default function Main() {
   return (
     <div>
       <SwiperList className="" allBills={allBills} />
+    <div className='max-w-[1000px] mx-auto'>
       <RecentBill />
       <h1 className="text-center text-4xl font-bold">Catagory</h1>
-    <div className='max-w-[1000px] mx-auto'>
       <Catagory  allBills={allBills} />
       </div>
     </div>
