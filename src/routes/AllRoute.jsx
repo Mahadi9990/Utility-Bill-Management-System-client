@@ -23,7 +23,7 @@ export const AllRoute = createBrowserRouter([
         index: true,
         // HydrateFallback: Loading,
         loader: async () => {
-          const res = await fetch("http://localhost:3000/bills");
+          const res = await fetch("https://server-2-phi.vercel.app/bills");
           if (!res.ok) throw new Error("Failed to fetch bills");
           return res.json();
         },
@@ -35,14 +35,14 @@ export const AllRoute = createBrowserRouter([
       },
       {
         path: "bills",
-        loader: () => fetch("http://localhost:3000/bills"),
+        loader: () => fetch("https://server-2-phi.vercel.app/bills"),
         HydrateFallback: Loading,
         element: <Bills />,
       },
       {
         path: "/bills/:id",
         loader: async ({ params }) => {
-          const res = await fetch(`http://localhost:3000/bills/${params.id}`);
+          const res = await fetch(`https://server-2-phi.vercel.app/bills/${params.id}`);
           if (!res.ok) throw new Error("Failed to fetch bill details");
           return res.json();
         },

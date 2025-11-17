@@ -18,7 +18,7 @@ export default function GoogleBtn() {
           email: user.email || user.providerData[0]?.email,
           profile_image: user.photoURL || "",
         }
-        fetch("http://localhost:3000/usersPost", {
+        fetch("https://server-2-phi.vercel.app/usersPost", {
           method: "POST",
           headers: {
             "content-type": "application/json",

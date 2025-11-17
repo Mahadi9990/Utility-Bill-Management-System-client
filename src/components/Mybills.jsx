@@ -12,7 +12,7 @@ export default function Mybills() {
   const xbtn = useRef();
   const upbtn = useRef();
   useEffect(() => {
-    fetch(`http://localhost:3000/userBillsRecords?email=${user.email}`, {
+    fetch(`https://server-2-phi.vercel.app/userBillsRecords?email=${user.email}`, {
       headers: {
         Authorization: `Bearer ${user.accessToken}`,
         "Content-Type": "application/json",
@@ -27,7 +27,7 @@ export default function Mybills() {
     const title = e.target.title.value;
     const amounts = e.target.amounts.value;
     const updatePaybillData = { title, amounts };
-    fetch(`http://localhost:3000/UpdataReports/${updateId}`, {
+    fetch(`https://server-2-phi.vercel.app/UpdataReports/${updateId}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -54,7 +54,7 @@ export default function Mybills() {
 
   const handleDelete = (id) => {
     console.log("delete");
-    fetch(`http://localhost:3000/billsRecodes/${id}`, {
+    fetch(`https://server-2-phi.vercel.app/billsRecodes/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

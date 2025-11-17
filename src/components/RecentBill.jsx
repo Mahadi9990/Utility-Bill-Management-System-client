@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function RecentBill() {
   const [bills, setbills] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:3000/sixBills")
+    fetch("https://server-2-phi.vercel.app/sixBills")
       .then((res) => res.json())
       .then((item) => setbills(item));
   }, []);

@@ -14,7 +14,7 @@ export default function BillDetails() {
   const modleRef = useRef();
   const billMonth = billDate.getMonth();
   useEffect(() => {
-    fetch(`http://localhost:3000/billsRecodes/${data._id}`)
+    fetch(`https://server-2-phi.vercel.app/billsRecodes/${data._id}`)
       .then((res) => res.json())
       .then((data) => setallUserPaybillsRecord(data));
   }, [data._id,allUserPaybillsRecord]);
@@ -31,7 +31,7 @@ export default function BillDetails() {
       amounts: parseFloat(data.amount), // convert to number
     };
     try {
-      fetch("http://localhost:3000/billsRecords", {
+      fetch("https://server-2-phi.vercel.app/billsRecords", {
         method: "POST",
         headers: {
           "content-type": "application/json",

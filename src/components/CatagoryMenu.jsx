@@ -5,11 +5,11 @@ export default function CatagoryMenu({ catagoryName, allBills }) {
   const [bills, setbills] = useState(allBills);
   const handleClick = (menuName) => {
     if (menuName === "All") {
-      fetch(`http://localhost:3000/bills`)
+      fetch(`https://server-2-phi.vercel.app/bills`)
         .then((res) => res.json())
         .then((data) => setbills(data));
     } else {
-      fetch(`http://localhost:3000/catagorys/${menuName}`)
+      fetch(`https://server-2-phi.vercel.app/catagorys/${menuName}`)
         .then((res) => res.json())
         .then((data) => setbills(data));
     }

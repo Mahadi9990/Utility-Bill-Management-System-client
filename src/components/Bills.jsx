@@ -25,7 +25,7 @@ export default function Bills() {
       amount: parseFloat(form.amount.value), // convert to number
     };
     try {
-      const res = await fetch("http://localhost:3000/billsPost", {
+      const res = await fetch("https://server-2-phi.vercel.app/billsPost", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
