@@ -15,7 +15,7 @@ const isLight = toggle === true;
       </h1>
 
       {/* Subheading */}
-      <p className={`text-lg ${isLight ? "text-[#6d5656]":"text-white"} text-center max-w-3xl mb-8`}>
+      <p className={`text-lg ${isLight ? "text-white":"text-black"} text-center max-w-3xl mb-8`}>
         Welcome to Utility Bill Management! We help users track and manage
         their utility bills efficiently. Our mission is to provide a seamless
         experience for managing bills and payments.
