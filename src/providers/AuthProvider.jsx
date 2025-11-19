@@ -11,6 +11,7 @@ import { auth } from "../firebase/firebase.config";
 import { AuthContext } from "./AuthContext";
 const AuthProvider = ({ children }) => {
   const [user, setuser] = useState(null);
+  const [toggle, settoggle] = useState(true);
   const [loading, setloading] = useState(true);
   const googleProvider = new GoogleAuthProvider();
   const googleSubmit =()=>{
@@ -37,6 +38,12 @@ const AuthProvider = ({ children }) => {
         unSubscribe()
     }
   }, []);
+    const toggleTheme = () => {
+    settoggle((prev) => (prev === true ? false : true));
+  };
+  // const toggleTheme = () => {
+  //   setLightDarkMode((prev) => (prev === "light" ? "dark" : "light"));
+  // };
   const authData = {
     user,
     setuser,
@@ -46,6 +53,9 @@ const AuthProvider = ({ children }) => {
     setloading,
     loading,
     googleSubmit,
+    settoggle,
+    toggle,
+    toggleTheme
   };
   return <AuthContext value={authData}>{children}</AuthContext>;
 };

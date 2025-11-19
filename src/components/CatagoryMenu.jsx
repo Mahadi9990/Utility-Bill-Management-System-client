@@ -42,7 +42,7 @@ export default function CatagoryMenu({ catagoryName, allBills }) {
               />
               <div className="flex justify-evenly items-center">
                 <div className="p-4">
-                  <h3 className="text-xl font-semibold">{bill.title}</h3>
+                  <h3 className="text-black text-xl font-semibold">{bill.title}</h3>
                   <p className="text-sm text-gray-500 mb-1">
                     📍 {bill.location} | 📅 {bill.date}
                   </p>

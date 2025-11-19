@@ -1,13 +1,20 @@
-import React, { useEffect, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React, {  useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../providers/AuthContext";
+gsap.registerPlugin(ScrollTrigger);
 
 export default function RecentBill() {
   const [bills, setbills] = useState([]);
+
+
   useEffect(() => {
     fetch("https://server-2-phi.vercel.app/sixBills")
       .then((res) => res.json())
       .then((item) => setbills(item));
   }, []);
+
   return (
     <div>
       <div className="">
@@ -15,11 +22,11 @@ export default function RecentBill() {
           All Bill Reports
         </h2>
         <div className="">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-5">
+          <div  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-5">
             {bills.map((bill, index) => (
               <div
-                key={index}
-                className="border bg-red- rounded-xl shadow-md hover:shadow-lg transition bg-white overflow-hidden p-4"
+              key={index}
+                className="border bills bg-red- rounded-xl shadow-md hover:shadow-lg transition bg-white overflow-hidden p-4"
               >
                 <img
                   src={bill.image}
@@ -28,7 +35,7 @@ export default function RecentBill() {
                 />
                 <div className="flex justify-evenly items-center">
                   <div className="p-4">
-                    <h3 className="text-xl font-semibold">{bill.title}</h3>
+                    <h3 className={`text-black text-xl font-semibold`}>{bill.title}</h3>
                     <p className="text-sm text-gray-500 mb-1">
                       📍 {bill.location} | 📅 {bill.date}
                     </p>

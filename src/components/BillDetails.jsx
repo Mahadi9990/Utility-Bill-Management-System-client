@@ -151,7 +151,6 @@ export default function BillDetails() {
             className="w-full h-80 object-cover rounded-xl shadow-md"
           />
         </div>
-
         <div className="md:w-1/2 mt-6 md:mt-0 space-y-3">
           <h1 className="text-3xl font-bold text-gray-800">{data.title}</h1>
           <p className="text-gray-500">{data.category}</p>

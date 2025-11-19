@@ -4,7 +4,7 @@ import { AuthContext } from "../providers/AuthContext";
 import { toast } from "react-toastify";
 
 export default function Header() {
-  const { user, singOutUser } = use(AuthContext);
+  const { user, singOutUser,toggleTheme } = use(AuthContext);
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") || "light"
   );
@@ -87,7 +87,10 @@ export default function Header() {
           <div className="">
                 <button
                   className="btn"
-                  onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+                  onClick={() => {
+                    setTheme(theme === "light" ? "dark" : "light")
+                    toggleTheme()
+                  }}
                 >
                   {theme === "light" ? "🌙" : "☀️"}
                 </button>

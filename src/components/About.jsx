@@ -1,7 +1,10 @@
-import React from "react";
+import React, { use } from "react";
+import { AuthContext } from "../providers/AuthContext";
 
 export default function About() {
+const {toggle} =use(AuthContext)
 
+const isLight = toggle === true;
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-6">
@@ -12,7 +15,7 @@ export default function About() {
       </h1>
 
       {/* Subheading */}
-      <p className={`text-lg text-[#6d5656] text-center max-w-3xl mb-8`}>
+      <p className={`text-lg ${isLight ? "text-[#6d5656]":"text-white"} text-center max-w-3xl mb-8`}>
         Welcome to Utility Bill Management! We help users track and manage
         their utility bills efficiently. Our mission is to provide a seamless
         experience for managing bills and payments.
@@ -27,10 +30,10 @@ export default function About() {
         ].map((item, index) => (
           <div
             key={index}
-            className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition cursor-pointer"
+            className={`${isLight ? "bg-white":"bg-black"} p-6 rounded-2xl shadow-lg hover:shadow-2xl transition cursor-pointer`}
           >
-            <h3 className="text-xl font-semibold mb-2 text-[#FF5A0A]">{item.title}</h3>
-            <p className="text-gray-600">{item.desc}</p>
+            <h3 className={`text-xl font-semibold mb-2 text-[#FF5A0A]`}>{item.title}</h3>
+            <p className={`${isLight ? "text-[#6d5656]":"text-white"}`}>{item.desc}</p>
           </div>
         ))}
       </div>
