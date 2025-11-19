@@ -1,7 +1,7 @@
 import React, { use, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../providers/AuthContext";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 
 export default function Header() {
   const { user, singOutUser,toggleTheme } = use(AuthContext);
@@ -119,6 +119,7 @@ export default function Header() {
           )}
         </div>
       </div>
+        <ToastContainer />
     </div>
   );
 }
