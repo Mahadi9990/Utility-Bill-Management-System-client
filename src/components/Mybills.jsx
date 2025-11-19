@@ -284,9 +284,11 @@ export default function Mybills() {
           </div>
         </div>
       )}
-      <button onClick={downloadPDF} className="btn bg-blue-600 text-white my-4">
+      <div className=" max-w-full mx-auto  flex justify-center items-center">
+        <button onClick={downloadPDF} className="btn primary-color text-white my-4 ">
         Download PDF
       </button>
+      </div>
     </div>
   );
 }
